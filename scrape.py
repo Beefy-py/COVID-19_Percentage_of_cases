@@ -3,6 +3,10 @@ This program gets the percentage of people infected by the corona virus per coun
 the percentage of active cases per country and the percentage of the total of people ever infected by country.
 """
 
+'''
+This program takes the data from a CoronaVirus website. https://www.worldometers.info/coronavirus/ and gives you the percentage of the population that has contracted coronavirus in total and the percentage of the population that currently has coronavirus by country.
+'''
+
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime

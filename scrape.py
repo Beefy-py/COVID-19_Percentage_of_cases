@@ -1,5 +1,5 @@
 """
-This program gets the percentage of people infected by the corona virus per country.
+This script gets the percentage of people infected by the corona virus per country.
 the percentage of active cases per country and the percentage of the total of people ever infected by country.
 """
 

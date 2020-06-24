@@ -3,17 +3,13 @@ This program gets the percentage of people infected by the corona virus per coun
 the percentage of active cases per country and the percentage of the total of people ever infected by country.
 """
 
-'''
-This program takes the data from a CoronaVirus website. https://www.worldometers.info/coronavirus/ and gives you the percentage of the population that has contracted coronavirus in total and the percentage of the population that currently has coronavirus by country.
-'''
-
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
 url = requests.get('https://www.worldometers.info/coronavirus/').text
 
-soup = BeautifulSoup(url, 'lxml')
+soup = BeautifulSoup(url, 'html.parser')
 
 table = soup.find('table')
 totalCases_and_activeCases_by_country_and_population = {}
@@ -50,7 +46,7 @@ def get_current_percent():
             pass
         else:
             print(
-                f'({round(act_cases[1] / act_cases[2] * 100, 4)}%) of {country}\'s population has CoronaVirus per -- {datetime.today().strftime("%B %d %Y")}')
+                f"({round(act_cases[1] / act_cases[2] * 100, 4)}%) -- {act_cases[1]} out of {format(act_cases[2], ',').replace(',', '.')} people in {country} have CoronaVirus. -- {datetime.today().strftime('%B %d %Y')}")
 
 
 def get_all_time_percent():
@@ -59,7 +55,7 @@ def get_all_time_percent():
             pass
         else:
             print(
-                f'The percentage of the total amount of people tested with CoronaVirus is ({round(tot_cases[0] / tot_cases[2] * 100, 4)}%) in {country} -- {datetime.today().strftime("%B %d %Y")}')
+                f"({round(tot_cases[0] / tot_cases[2] * 100, 4)}%) of {format(tot_cases[2], ',').replace(',', '.')} has been tested positive with covid-19 in {country} in total. -- {datetime.today().strftime('%B %d %Y')} population={format(tot_cases[2], ',').replace(',', '.')}")
 
 
 get_current_percent()

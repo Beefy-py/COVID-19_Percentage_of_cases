@@ -10,6 +10,7 @@ beautifulsoup4 = "*"
 lxml = "*"
 requests = "*"
 twilio = "*"
+jinja2 = "*"
 
 [requires]
 python_version = "3.7"

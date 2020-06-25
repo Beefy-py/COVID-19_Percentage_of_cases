@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            outline: none;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        .line {
+            background-color: var(--blue-color);
+            width: 50%;
+            height: 2px;
+            left: 0;
+            border-radius: 1000px;
+        }
+
+        :root {
+            --blue-color: rgb(10, 69, 136);
+        }
+
+        a {
+            color: var(--blue-color);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--blue-color);
+        }
+
+        table {
+            text-align: center;
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, .4);
+        }
+
+        #active_cases th {
+            background-color: seagreen;
+            padding: 10px;
+            text-transform: uppercase;
+            color: rgb(255, 255, 255);
+        }
+
+        #active_cases {
+            border-collapse: collapse;
+        }
+
+        #active_cases td {
+            background-color: rgb(168, 206, 184);
+            padding: 5px;
+
+
+        }
+
+        #total_cases th {
+            background-color: rgb(189, 68, 68);
+            padding: 10px;
+            text-transform: uppercase;
+            color: rgb(255, 255, 255);
+        }
+
+        #total_cases {
+            border-collapse: collapse;
+        }
+
+        #total_cases td {
+            background-color: rgb(194, 142, 142);
+            padding: 5px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Scraped COVID-19 Data</h1>
+    <p>I scraped this data from <a href="https://www.worldometers.info/coronavirus/">Worldometer</a></p>
+    <p>These tables tell you the percentage of the people infected with COVID-19 per country</p>
+    <br>
+    <div class="line"></div>
+    <br>
+    <table id="active_cases">
+        <tr>
+            <th>percentages</th>
+            <th>active cases</th>
+            <th>populations</th>
+            <th>country names</th>
+        </tr>
+        {%for i in range(countries|length)%}
+        <tr>
+            <td><span class="percentage">{{percentage_active_cases[i]}}</span></td>
+            <td>{{active_cases_out[i]}}</td>
+            <td>{{populations[i]}}</td>
+            <td>{{countries[i]}}</td>
+        </tr>
+        {%endfor%}
+
+    </table>
+    <br>
+    <br>
+    <table id="total_cases">
+        <tr>
+            <th>percentage</th>
+            <th>total cases</th>
+            <th>population</th>
+            <th>country names</th>
+        </tr>
+        {%for i in range(countries|length)%}
+        <tr>
+            <td><span class="percentage">{{percentage_total_cases[i]}}</span></td>
+            <td>{{total_cases_out[i]}}</td>
+            <td>{{populations[i]}}</td>
+            <td>{{countries[i]}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+
+</html>
